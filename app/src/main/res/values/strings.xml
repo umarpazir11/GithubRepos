@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Github Repos</string>
+
+    <!-- Accessibility -->
+    <string name="_avatar_image">The avatar image of the owner</string>
+    <string name="number_of_forks">Forks: %d</string>
+
+    <!-- Labels -->
+    <string name="_title_label">Android Showcase</string>
+    <string name="_description_label">Description</string>
+    <string name="_number_of_forks">Forks: 100</string>
+    <string name="search_repositories">Search Repositories</string>
+
+</resources>

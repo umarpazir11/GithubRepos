@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildToolsVersion
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "com.search.repos"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.version.code
+        versionName buildConfig.version.name
+        buildConfigField 'String', 'USERNAME', "\"umarpazir11\""
+        buildConfigField 'String', 'PASSWORD', "\"9a2a79c3ac500e6eedc1281865cbdc83152d6e08\""
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.kotlin.stdlib.jdk
+    implementation deps.android.androidx.appCompat
+    implementation deps.android.androidx.core
+    implementation deps.android.androidx.constraintLayout
+    implementation deps.android.androidx.recyclerView
+    implementation deps.android.material
+
+    //Lifecyle
+    implementation deps.android.arch.lifecycle
+
+    //Retrofit and Okhttp
+    implementation deps.retrofit.client
+    implementation deps.retrofit.gsonConverter
+    implementation deps.okhttp.okhttp
+    implementation deps.okhttp.loggingInterceptor
+
+    //Glide Image Loader lib
+    kapt deps.glide.compiler
+    implementation deps.glide.glide
+
+    //Navigation
+    implementation deps.android.navigation.fragmentktx
+    implementation deps.android.navigation.uiktx
+
+    //dagger
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.androidSupport
+    kapt deps.dagger.androidProcessor
+    kapt deps.dagger.compiler
+}
